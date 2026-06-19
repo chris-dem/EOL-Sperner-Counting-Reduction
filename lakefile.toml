@@ -1,0 +1,32 @@
+name = "ppad-parsimonious-reductions"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["ppad-parsimonious-reductions"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+autoImplicit = false
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+
+[[require]]
+name = "cslib"
+scope = "leanprover"
+
+[[require]]
+name = "checkdecls"
+scope = "PatrickMassot"
+rev = "master"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+
+[[lean_lib]]
+name = "PpadParsimoniousReductions"
+
+[[lean_exe]]
+name = "ppad-parsimonious-reductions"
+root = "Main"
