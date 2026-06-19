@@ -1,7 +1,7 @@
-name = "ppad-parsimonious-reductions"
+name = "PPADParsimoniousReductions"
 version = "0.1.0"
 keywords = ["math"]
-defaultTargets = ["ppad-parsimonious-reductions"]
+defaultTargets = ["PPADParsimoniousReductions"]
 
 [leanOptions]
 pp.unicode.fun = true # pretty-prints `fun a ↦ b`
@@ -16,6 +16,10 @@ name = "cslib"
 scope = "leanprover"
 
 [[require]]
+name =  "proofwidgets"
+scope = "leanprover-community" 
+
+[[require]]
 name = "checkdecls"
 scope = "PatrickMassot"
 rev = "master"
@@ -25,8 +29,4 @@ name = "mathlib"
 scope = "leanprover-community"
 
 [[lean_lib]]
-name = "PpadParsimoniousReductions"
-
-[[lean_exe]]
-name = "ppad-parsimonious-reductions"
-root = "Main"
+name = "PPADParsimoniousReductions"
