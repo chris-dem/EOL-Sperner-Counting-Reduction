@@ -36,14 +36,20 @@ abbrev vertexSet (_ : EOLGraph ν) : Finset (Fin ν) := Finset.univ
 scoped notation "V(" G ")" => vertexSet G
 
 
-abbrev hasNext (G : EOLGraph ν) (u : Fin ν) :=  (G.epred ∘ G.esucc) u = u
-abbrev hasPrev (G : EOLGraph ν) (u : Fin ν) :=  (G.esucc ∘ G.epred) u = u
+abbrev hasNext (G : EOLGraph ν) (u : Fin ν) : Prop :=  (G.epred ∘ G.esucc) u = u
+abbrev hasPrev (G : EOLGraph ν) (u : Fin ν) : Prop :=  (G.esucc ∘ G.epred) u = u
 
 /-- `⊤(G, u)` denotes the prop if u has next -/
 scoped notation "⊤(" G "," u ")" =>  hasNext G u
 
+
+
 /-- `⊥(G, u)` denotes the prop if u has prev -/
 scoped notation "⊥(" G "," u ")" =>  hasPrev G u
+
+
+scoped notation "▷(" G ")" =>  Finset.univ.filter (fun p => ⊤(G, p) ∧ ¬⊥(G, p))
+scoped notation "◁(" G ")" =>  Finset.univ.filter (fun p => ⊥(G, p) ∧ ¬⊤(G, p) )
 
 abbrev IsEdge (G : EOLGraph ν) (u v : Vertex ν) : Prop
     := u ≠ v ∧ esucc G  u = v ∧ epred G v = u
@@ -66,14 +72,14 @@ scoped notation "δ(" G "," v ")" => IncidentEdgeSet G v
 /-- `deg(G)` denotes the `degree` of a graph `G`. -/
 scoped notation "deg(" G "," v ")" => #δ(G,v)
 
+
 /-- `▵(G)` returns all starts and ends of a line -/
-scoped notation "▵(" G ")" => Finset.univ.filter  (fun v => ⊤(G,v) ⊕ ⊥(G, v))
+scoped notation "▵(" G ")" =>  ◁(G) ∪ ▷(G)
 
+/-- `Γ(G)` returns all line vertices (deg_in = deg_out = 1) -/
+scoped notation "⋄(" G ")" => Finset.univ.filter  (fun v => ⊤(G,v) ∧ ⊥(G, v))
 
-/-- `Γ(G)` returns all starts and ends of a line -/
-scoped notation "Γ(" G ")" => Finset.univ.filter  (fun v => ⊤(G,v) ∧ ⊥(G, v))
-
-/-- `⊙(G)` returns all starts and ends of a line -/
-scoped notation "⊙(" G ")" => Finset.univ.filter  (fun v => ¬ ⊤(G,v) ∧  ¬⊥(G, v))
+/-- `⊙(G)` returns all lone vertices (deg = 0) -/
+scoped notation "ω(" G ")" => Finset.univ.filter  (fun v => ¬ ⊤(G,v) ∧  ¬⊥(G, v))
 
 end EOLGraph
