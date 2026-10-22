@@ -3,7 +3,9 @@ import Mathlib.Data.Fin.Basic
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Finset.Prod
 import Mathlib.Data.Fintype.Basic
+
 import Mathlib.Data.Nat.Basic
+
 import PPADParsimoniousReductions.Defs.Basic
 
 open Fin Nat Finset Set
@@ -16,7 +18,7 @@ variable {ν : ℕ} [NeZero ν]
 theorem end_line_vertices_disjoint (G : EOLGraph ν) :
     ({▵(G) , ⋄(G), ω(G)}: Set (Finset (Fin ν))).Pairwise Disjoint := by 
     simp only [Set.Pairwise, ne_eq, Function.comp_apply, mem_singleton_iff, 
-      mem_insert_iff, Disjoint, Finset.le_eq_subset,
+      mem_insert_iff, Disjoint,
       Finset.bot_eq_empty, subset_empty, forall_eq_or_imp, forall_eq,
       not_true_eq_false, forall_self_imp, IsEmpty.forall_iff, true_and, and_true]
     grind
@@ -34,6 +36,22 @@ theorem vertex_partition (G : EOLGraph ν) :
 /-- Vertices are partitioned, to ends, lines, and lones -/
 theorem sources_equal_sinks (G : EOLGraph ν) :
       #◁(G) = #▷(G):= by
+        sorry
+
+theorem source_sink_match (G: EOLGraph ν)
+    (v : Fin ν) (hin : v ∈ ▷(G)) (w: Walk ν)
+    (hp: Path ν) (hw: w.head = v) (hin: IsPath):
+
+      := by sorry
+
+theorem source_sink_bijection  (G : EOLGraph ν): Nonempty (▷(G) ≃ ◁(G))
+      := by
+        sorry
+
+
+theorem sol_eol_nonempty (G : EOLGraph ν) : 𝒮(G)  != ∅ := by
+  sorry
+
 
 
 /- TODO: Add construction for paths-/

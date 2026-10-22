@@ -76,6 +76,9 @@ scoped notation "deg(" G "," v ")" => #δ(G,v)
 /-- `▵(G)` returns all starts and ends of a line -/
 scoped notation "▵(" G ")" =>  ◁(G) ∪ ▷(G)
 
+/-- `▵(G)` returns all solutions of an instance --/
+scoped notation "𝒮(" G ")" => ▵(G) \ {0}
+
 /-- `Γ(G)` returns all line vertices (deg_in = deg_out = 1) -/
 scoped notation "⋄(" G ")" => Finset.univ.filter  (fun v => ⊤(G,v) ∧ ⊥(G, v))
 

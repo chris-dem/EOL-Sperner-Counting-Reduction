@@ -20,6 +20,11 @@ name =  "proofwidgets"
 scope = "leanprover-community" 
 
 [[require]]
+name = "GraphAlgorithms"
+git = "https://github.com/sorrachai/GraphLib"
+rev = "main"
+
+[[reqire]]
 name = "checkdecls"
 scope = "PatrickMassot"
 rev = "master"
