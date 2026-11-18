@@ -13,25 +13,26 @@ maxSynthPendingDepth = 3
 
 [[require]]
 name = "cslib"
-scope = "leanprover"
+path = "../shared/cslib"
 
 [[require]]
 name =  "proofwidgets"
 scope = "leanprover-community" 
 
 [[require]]
-name = "GraphAlgorithms"
-git = "https://github.com/sorrachai/GraphLib"
-rev = "main"
-
-[[reqire]]
 name = "checkdecls"
 scope = "PatrickMassot"
 rev = "master"
 
 [[require]]
+name = "AlgoLib"
+git = "https://github.com/cslib-community/AlgoLib.git"
+rev = "main"
+
+# Keep mathlib last so its transitive dependency versions take precedence.
+[[require]]
 name = "mathlib"
-scope = "leanprover-community"
+path = "../shared/mathlib4"
 
 [[lean_lib]]
 name = "PPADParsimoniousReductions"
